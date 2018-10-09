@@ -1,0 +1,9 @@
+{
+  "build-app": {
+    "proxy": {
+      "/srv": "http://localhost:8888"
+    }
+  },
+	"test-intern": {},
+	"create-app": {}
+}
