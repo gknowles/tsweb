@@ -4,6 +4,6 @@
       "/srv": "http://localhost:8888"
     }
   },
-	"test-intern": {},
-	"create-app": {}
+  "test-intern": {},
+  "create-app": {}
 }

@@ -15,15 +15,9 @@ const getDimCountersCommand = commandFactory(async ({ path }) => {
     const response = await fetch(`${baseUrl}/srv/counters.json`, {
         //mode: 'no-cors',
     });
-    const json = await response.json();
-    let out = {} as any;
-    out.date = new Date();
-    out.items = [];
-    for (let n in json) {
-        out.items.push({name: n, value: json[n]});
-    }
+    let out = {data: new Date(), info: await response.json()};
     return [replace(path('dimCounters'), out)];
 });
-export const getDimCountersProcess = createProcess('get-dim-counters', [
+export const getDimCountersProcess = createProcess('get-dimCounters', [
     getDimCountersCommand
 ]);

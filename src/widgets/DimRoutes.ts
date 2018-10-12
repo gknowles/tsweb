@@ -7,23 +7,21 @@
 import { v } from '@dojo/framework/widget-core/d';
 import { WidgetBase } from '@dojo/framework/widget-core/WidgetBase';
 
-import { DimRoutesItem } from '../interfaces';
+import { TsInfo } from '../interfaces';
 
 import * as css from '../styles/dimRoutes.m.css'
 
-export interface DimRoutesProperties extends DimRoutesItem {
-    getRoutes: (opts: object) => void;
-}
-export class DimRoutes extends WidgetBase<DimRoutesProperties> {
+export class DimRoutes extends WidgetBase<TsInfo> {
     protected renderItems() {
-        const { items = [] } = this.properties;
-        let out = [ v('tr', {classes: css.head}, 
+        const { info = [] } = this.properties;
+        let out = [ v('tr', {key: -1, classes: css.head}, 
             [ v('th', ['Matched']), v('th', ['Methods']), v('th', ['Path']) ]) ];
-        for (let i of items) {
-            out.push(v('tr', {classes: css.row}, [
-                v('td', {classes: css.number}, [i.matched.toLocaleString()]),
-                v('td', {classes: css.text}, [i.methods.join(' ')]),
-                v('td', {classes: css.text}, [i.path]),
+        for (let i = 0; i < info.length; ++i) {
+            let r = info[i];
+            out.push(v('tr', {key: i, classes: css.row}, [
+                v('td', {classes: css.number}, [r.matched.toLocaleString()]),
+                v('td', {classes: css.text}, [r.methods.join(' ')]),
+                v('td', {classes: css.text}, [r.path]),
             ]));
         }
         return out;

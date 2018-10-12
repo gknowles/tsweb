@@ -12,43 +12,17 @@ export interface Routing {
 	params: { [index: string]: string };
 }
 
-export interface DimCounterItem {
-    name: string;
-    value: number;
-}
-export interface DimCountersItem {
-    items: CounterItem[];
+export interface TsInfo {
     date: Date;
-}
-
-export interface DimRouteItem {
-    path: string;
-    methods: string[];
-    matched: number;
-}
-export interface DimRoutesItem {
-    items: DimRouteItem[];
-    date: Date;
-}
-
-export interface InfoItem {
-    name: any; 
-    value: any;
-}
-export interface InfoList {
-    title: string;
-    items: InfoItem[];
-}
-export interface InfoTable {
-    lists: InfoList[];
-    date: Date;
+    info: any;
+    getInfo: (opts: object) => void;
 }
 
 export interface State {
     routing: Routing;
     errors: Errors;
-    dimCounters: DimCountersItem;
-    dimRoutes: DimRoutesItem;
-    tsAbout: InfoTable;
+    dimCounters: any;
+    dimRoutes: any;
+    tsAbout: any;
     tsFuncts: any;
 }

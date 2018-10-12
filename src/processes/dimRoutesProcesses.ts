@@ -15,12 +15,9 @@ const getDimRoutesCommand = commandFactory(async ({ path }) => {
     const response = await fetch(`${baseUrl}/srv/routes.json`, {
         //mode: 'no-cors',
     });
-    const json = await response.json();
-    let out = {} as any;
-    out.date = new Date();
-    out.items = json;
+    let out = {data: new Date(), info: await response.json()};
     return [replace(path('dimRoutes'), out)];
 });
-export const getDimRoutesProcess = createProcess('get-dim-routes', [
+export const getDimRoutesProcess = createProcess('get-dimRoutes', [
     getDimRoutesCommand
 ]);

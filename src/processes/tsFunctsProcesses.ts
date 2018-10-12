@@ -15,9 +15,9 @@ const getFunctsCommand = commandFactory(async ({ path }) => {
         //mode: 'no-cors',
     });
     let json = await response.json();
-    let out = {date: new Date(), functs: json};
+    let out = {date: new Date(), info: json};
     return [replace(path('tsFuncts'), out)];
 });
-export const getTsFunctsProcess = createProcess('get-ts-functs', [
+export const getTsFunctsProcess = createProcess('get-tsFuncts', [
     getFunctsCommand
 ]);

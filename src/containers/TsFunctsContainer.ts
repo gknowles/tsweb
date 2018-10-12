@@ -11,9 +11,9 @@ import { State } from '../interfaces';
 import StoreContainer from './StoreContainer';
 
 function getProperties(store: Store<State>): TsFunctsProperties {
-    let ci = store.get(store.path('tsFuncts')) || {functs: [], date: new Date};
+    let ci = store.get(store.path('tsFuncts')) || {info: [], date: new Date};
     let out = {
-        functs: ci.functs,
+        info: ci.info,
         date: ci.date,
         getInfo: getTsFunctsProcess(store),
     }

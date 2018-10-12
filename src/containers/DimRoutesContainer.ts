@@ -5,17 +5,17 @@
 
 import { Store } from '@dojo/framework/stores/Store';
 
-import { DimRoutes, DimRoutesProperties } from '../widgets/DimRoutes';
+import { DimRoutes } from '../widgets/DimRoutes';
 import { getDimRoutesProcess } from '../processes/dimRoutesProcesses';
-import { State } from '../interfaces';
+import { State, TsInfo } from '../interfaces';
 import StoreContainer from './StoreContainer';
 
-function getProperties(store: Store<State>): DimRoutesProperties {
-    let ci = store.get(store.path('dimRoutes')) || {items: [], date: new Date};
+function getProperties(store: Store<State>): TsInfo {
+    let ci = store.get(store.path('dimRoutes')) || {info: [], date: new Date};
     let out = {
-        items: ci.items,
+        info: ci.info,
         date: ci.date,
-        getRoutes: getDimRoutesProcess(store),
+        getInfo: getDimRoutesProcess(store),
     }
     return out;
 }

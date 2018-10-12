@@ -5,22 +5,22 @@
 
 import { Store } from '@dojo/framework/stores/Store';
 
-import { TsInfo, TsInfoProperties } from '../widgets/TsInfo';
+import { TsAbout } from '../widgets/TsAbout';
 import { getTsAboutProcess } from '../processes/tsAboutProcesses';
-import { State } from '../interfaces';
+import { State, TsInfo } from '../interfaces';
 import StoreContainer from './StoreContainer';
 
-function getProperties(store: Store<State>): TsInfoProperties {
-    let ci = store.get(store.path('tsAbout')) || {lists: [], date: new Date};
+function getProperties(store: Store<State>): TsInfo {
+    let ci = store.get(store.path('tsAbout')) || {info: [], date: new Date};
     let out = {
-        lists: ci.lists,
+        info: ci.info,
         date: ci.date,
         getInfo: getTsAboutProcess(store),
     }
     return out;
 }
 
-export default StoreContainer(TsInfo, 'state', {
+export default StoreContainer(TsAbout, 'state', {
     paths: [['tsAbout']],
     getProperties
 });

@@ -7,34 +7,31 @@
 import { v } from '@dojo/framework/widget-core/d';
 import { WidgetBase } from '@dojo/framework/widget-core/WidgetBase';
 
-import { DimCountersItem } from '../interfaces';
+import { TsInfo } from '../interfaces';
 
 import * as css from '../styles/dimCounters.m.css'
 
-export interface DimCountersProperties extends DimCountersItem {
-    getCounters: (opts: object) => void;
-}
-export class DimCounters extends WidgetBase<DimCountersProperties> {
+export class DimCounters extends WidgetBase<TsInfo> {
     protected renderItems() {
-        const { items = [] } = this.properties;
+        let info = this.properties.info || {};
         let out = [ v('tr', {classes: css.head}, 
             [ v('th', ['Value']), v('th', ['Name']) ]) ];
-        for (let i of items) {
+        for (let name in info) {
             out.push(v('tr', {}, [
                 v('td', {classes: css.value}, [
-                    i.value.toLocaleString(
+                    info[name].toLocaleString(
                         undefined, 
                         {maximumFractionDigits: 3}
                     )
                 ]),
-                v('td', {classes: css.name}, [i.name]),
+                v('td', {classes: css.name}, [name]),
             ]));
         }
         return out;
     }
 	protected render() {
         return v('div', {classes: css.root}, [
-            v('h2', {}, ['Performance counters']),
+            v('h2', {}, ['Performance Counters']),
             v('table', {}, this.renderItems()),
         ]);
 	}

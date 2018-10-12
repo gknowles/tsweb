@@ -5,17 +5,17 @@
 
 import { Store } from '@dojo/framework/stores/Store';
 
-import { DimCounters, DimCountersProperties } from '../widgets/DimCounters';
+import { DimCounters } from '../widgets/DimCounters';
 import { getDimCountersProcess } from '../processes/dimCountersProcesses';
-import { State } from '../interfaces';
+import { State, TsInfo } from '../interfaces';
 import StoreContainer from './StoreContainer';
 
-function getProperties(store: Store<State>): DimCountersProperties {
-    let ci = store.get(store.path('dimCounters')) || {items: [], date: new Date};
+function getProperties(store: Store<State>): TsInfo {
+    let ci = store.get(store.path('dimCounters')) || {info: {}, date: new Date};
     let out = {
-        items: ci.items,
+        info: ci.info,
         date: ci.date,
-        getCounters: getDimCountersProcess(store),
+        getInfo: getDimCountersProcess(store),
     }
     return out;
 }
