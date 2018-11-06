@@ -1,7 +1,7 @@
 // Copyright Glen Knowles 2018.
 // Distributed under the Boost Software License, Version 1.0.
 //
-// utils.ts - tismet
+// processes/utils.ts - tismet
 
 import { createCommandFactory } from '@dojo/framework/stores/process';
 import { State } from '../interfaces';

@@ -9,7 +9,7 @@ import { WidgetBase } from '@dojo/framework/widget-core/WidgetBase';
 
 import { TsInfo } from '../interfaces';
 
-import * as css from '../styles/tsInfo.m.css'
+import * as css from '../styles/tsAbout.m.css'
 
 export class TsAbout extends WidgetBase<TsInfo> {
     protected renderItems(items: any[]) {
@@ -32,11 +32,15 @@ export class TsAbout extends WidgetBase<TsInfo> {
         ]));
         for (let d of dirs) {
             let pct = 100 - 100 * d.value.spaceAvail / d.value.spaceTotal;
+            let cls = [css.value];
+            if (pct > 85) {
+                cls.push(pct > 95 ? css.error : css.warn);
+            }
             out.push(v('tr', {}, [
-                v('td', {}, [d.name]),
-                v('td', {}, [d.value.path]),
-                v('td', {}, [d.value.spaceTotal.toLocaleString()]),
-                v('td', {}, [pct.toLocaleString() + '%']),
+                v('td', {classes: css.name}, [d.name]),
+                v('td', {classes: css.value}, [d.value.path]),
+                v('td', {classes: css.value}, [d.value.spaceTotal.toLocaleString()]),
+                v('td', {classes: cls}, [pct.toLocaleString() + '%']),
             ]));
         }
         return out;

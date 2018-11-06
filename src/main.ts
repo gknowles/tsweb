@@ -19,6 +19,9 @@ const router = registerRouterInjector(getRouteConfig(store), registry);
 
 registry.define('settings', () => import('./widgets/Settings'))
 registry.define('dimCounters', () => import('./containers/DimCountersContainer'));
+registry.define('dimCrashes', () => import('./containers/DimCrashesContainer'));
+registry.define('dimLogs', () => import('./containers/DimLogsContainer'));
+registry.define('dimLogTail', () => import('./containers/DimLogTailContainer'));
 registry.define('dimRoutes', () => import('./containers/DimRoutesContainer'));
 registry.define('tsAbout', () => import('./containers/TsAboutContainer'));
 registry.define('tsFuncts', () => import('./containers/TsFunctsContainer'));

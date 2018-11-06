@@ -22,6 +22,9 @@ export interface State {
     routing: Routing;
     errors: Errors;
     dimCounters: any;
+    dimCrashes: any;
+    dimLogs: any;
+    dimLogTail: any;
     dimRoutes: any;
     tsAbout: any;
     tsFuncts: any;

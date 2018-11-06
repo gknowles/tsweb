@@ -9,4 +9,7 @@ export const SettingsOutlet = Outlet('settings', 'settings');
 export const AboutOutlet = Outlet('tsAbout', 'tsAbout');
 export const FunctsOutlet = Outlet('tsFuncts', 'tsFuncts');
 export const CountersOutlet = Outlet('dimCounters', 'dimCounters');
+export const CrashesOutlet = Outlet('dimCrashes', 'dimCrashes');
+export const LogsOutlet = Outlet('dimLogs', 'dimLogs');
+export const LogTailOutlet = Outlet('dimLogTail', 'dimLogTail');
 export const RoutesOutlet = Outlet('dimRoutes', 'dimRoutes');

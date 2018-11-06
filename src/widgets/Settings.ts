@@ -12,6 +12,9 @@ import {
     AboutOutlet,
     FunctsOutlet,
     CountersOutlet,
+    CrashesOutlet,
+    LogsOutlet,
+    LogTailOutlet,
     RoutesOutlet,
 } from '../outlets';
 import * as css from '../styles/tabs.m.css'
@@ -44,7 +47,9 @@ export default class Settings
                     v('div', {classes: this.theme(css.links)}, [
                         this._createLink('tsAbout', 'About'),
                         this._createLink('dimCounters', 'Counters'),
+                        this._createLink('dimCrashes', 'Crashes'),
                         this._createLink('tsFuncts', 'Functions'),
+                        this._createLink('dimLogs', 'Logs'),
                         this._createLink('dimRoutes', 'Routes'),
                     ])
                 ])
@@ -53,6 +58,9 @@ export default class Settings
                 w(AboutOutlet, {}),
                 w(FunctsOutlet, {}),
                 w(CountersOutlet, {}),
+                w(CrashesOutlet, {}),
+                w(LogsOutlet, {}),
+                w(LogTailOutlet, {}),
                 w(RoutesOutlet, {}),
             ])
         ]);
