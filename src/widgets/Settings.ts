@@ -6,17 +6,16 @@
 import { v, w } from '@dojo/framework/widget-core/d';
 import { WidgetBase } from '@dojo/framework/widget-core/WidgetBase';
 import { Link } from '@dojo/framework/routing/Link';
+import { Outlet } from '@dojo/framework/routing/Outlet';
 import { theme, ThemedMixin } from '@dojo/framework/widget-core/mixins/Themed';
 
-import {
-    AboutOutlet,
-    FunctsOutlet,
-    CountersOutlet,
-    CrashesOutlet,
-    LogsOutlet,
-    LogTailOutlet,
-    RoutesOutlet,
-} from '../outlets';
+import TsAboutContainer from '../containers/TsAboutContainer';
+import TsFunctsContainer from '../containers/TsFunctsContainer';
+import DimCountersContainer from '../containers/DimCountersContainer';
+import DimCrashesContainer from '../containers/DimCrashesContainer';
+import DimLogsContainer from '../containers/DimLogsContainer';
+import DimLogTailContainer from '../containers/DimLogTailContainer';
+import DimRoutesContainer from '../containers/DimRoutesContainer';
 import * as css from '../styles/tabs.m.css'
 
 export interface SettingsProperties {
@@ -55,13 +54,27 @@ export default class Settings
                 ])
             ]),
             v('div', {classes: this.theme(css.main)}, [
-                w(AboutOutlet, {}),
-                w(FunctsOutlet, {}),
-                w(CountersOutlet, {}),
-                w(CrashesOutlet, {}),
-                w(LogsOutlet, {}),
-                w(LogTailOutlet, {}),
-                w(RoutesOutlet, {}),
+                w(Outlet, {id: 'tsAbout', renderer: (matchDetails: any) => {
+                    return w(TsAboutContainer, {});
+                }}),
+                w(Outlet, {id: 'tsFuncts', renderer: (matchDetails: any) => {
+                    return w(TsFunctsContainer, {});
+                }}),
+                w(Outlet, {id: 'dimCounters', renderer: (matchDetails: any) => {
+                    return w(DimCountersContainer, {});
+                }}),
+                w(Outlet, {id: 'dimCrashes', renderer: (matchDetails: any) => {
+                    return w(DimCrashesContainer, {});
+                }}),
+                w(Outlet, {id: 'dimLogs', renderer: (matchDetails: any) => {
+                    return w(DimLogsContainer, {});
+                }}),
+                w(Outlet, {id: 'dimLogTail', renderer: (matchDetails: any) => {
+                    return w(DimLogTailContainer, {});
+                }}),
+                w(Outlet, {id: 'dimRoutes', renderer: (matchDetails: any) => {
+                    return w(DimRoutesContainer, {});
+                }}),
             ])
         ]);
 	}

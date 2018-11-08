@@ -3,7 +3,8 @@
 //
 // main.ts - tismet
 
-import { ProjectorMixin } from '@dojo/framework/widget-core/mixins/Projector';
+import renderer from '@dojo/framework/widget-core/vdom';
+import { w } from '@dojo/framework/widget-core/d';
 import { Registry } from '@dojo/framework/widget-core/Registry';
 import { Store } from '@dojo/framework/stores/Store';
 import { registerRouterInjector } from '@dojo/framework/routing/RouterInjector';
@@ -17,14 +18,29 @@ const store = new Store<State>();
 const registry = new Registry();
 const router = registerRouterInjector(getRouteConfig(store), registry);
 
-registry.define('settings', () => import('./widgets/Settings'))
-registry.define('dimCounters', () => import('./containers/DimCountersContainer'));
-registry.define('dimCrashes', () => import('./containers/DimCrashesContainer'));
-registry.define('dimLogs', () => import('./containers/DimLogsContainer'));
-registry.define('dimLogTail', () => import('./containers/DimLogTailContainer'));
-registry.define('dimRoutes', () => import('./containers/DimRoutesContainer'));
-registry.define('tsAbout', () => import('./containers/TsAboutContainer'));
-registry.define('tsFuncts', () => import('./containers/TsFunctsContainer'));
+import { getDimCountersProcess } from './processes/dimCountersProcesses';
+import { getDimCrashesProcess } from './processes/dimCrashesProcesses';
+import { getDimLogsProcess, getDimLogTailProcess 
+    } from './processes/dimLogsProcesses';
+import { getDimRoutesProcess } from './processes/dimRoutesProcesses';
+import { getTsAboutProcess } from './processes/tsAboutProcesses';
+import { getTsFunctsProcess } from './processes/tsFunctsProcesses';
+
+router.on('outlet', ({outlet, action}: any) => {
+    if (action !== 'enter')
+        return;
+    switch (outlet.id) {
+        case 'dimCounters': getDimCountersProcess(store)({}); break;
+        case 'dimCrashes': getDimCrashesProcess(store)({}); break;
+        case 'dimLogs': getDimLogsProcess(store)({}); break;
+        case 'dimLogTail': 
+            getDimLogTailProcess(store)({file: outlet.params.file});
+            break;
+        case 'dimRoutes': getDimRoutesProcess(store)({}); break;
+        case 'tsAbout': getTsAboutProcess(store)({}); break;
+        case 'tsFuncts': getTsFunctsProcess(store)({}); break;
+    }
+});
 
 router.on('nav', ({outlet, context}: any) => {
     changeRouteProcess(store)({outlet, context});
@@ -47,12 +63,5 @@ registry.defineInjector('state', () => () => store);
 
 // Create a projector to convert the virtual DOM produced by the application 
 // into the rendered page.
-const Projector = ProjectorMixin(App);
-const projector = new Projector();
-projector.setProperties({ registry })
-
-// By default, append() will attach the rendered content to document.body. To 
-// insert this application into existing HTML content, pass the desired root 
-// node to append().
-const root = document.querySelector('app') || undefined;
-projector.append(root);
+const r = renderer(() => w(App, {}));
+r.mount({domNode: document.getElementById('app')!, registry});

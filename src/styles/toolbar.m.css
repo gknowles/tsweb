@@ -11,6 +11,9 @@ toolbar.m.css - tismet
     background-color: #292929;
     position: fixed;
     top: 0;
+    width: 100%;
+    height: 38px;
+    padding: 7px 0px 7px 0px;
 }
 
 .logo {
@@ -25,6 +28,7 @@ toolbar.m.css - tismet
     padding-right: 20px;
     color: #c8c8c8;
     text-decoration-line: unset;
+    vertical-align: super;
 }
 
 .title:before {
@@ -35,7 +39,7 @@ toolbar.m.css - tismet
     display: inline;
     font-size: x-large;
     font-weight: bold;
-    margin: 7px 40px 7px 20px;
+    margin: 0px 40px 0px 20px;
     font-family: 'Arial', serif;
     color: red;
 }

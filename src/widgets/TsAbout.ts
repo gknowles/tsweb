@@ -28,7 +28,7 @@ export class TsAbout extends WidgetBase<TsInfo> {
             v('th', []),
             v('th', ['Path']),
             v('th', ['Total']),
-            v('th', ['Used']),
+            v('th', ['In Use']),
         ]));
         for (let d of dirs) {
             let pct = 100 - 100 * d.value.spaceAvail / d.value.spaceTotal;

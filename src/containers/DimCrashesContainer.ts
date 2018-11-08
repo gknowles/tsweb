@@ -6,7 +6,7 @@
 import { Store } from '@dojo/framework/stores/Store';
 
 import { DimCrashes } from '../widgets/DimCrashes';
-import { getDimCrashesProcess } from '../processes/DimCrashesProcesses';
+import { getDimCrashesProcess } from '../processes/dimCrashesProcesses';
 import { State, TsInfo } from '../interfaces';
 import StoreContainer from './StoreContainer';
 

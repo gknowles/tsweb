@@ -1,17 +1,23 @@
 {
   "name": "tsweb",
   "version": "1.0.0",
+  "description": "Web UI for Tismet",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gknowles/tsweb.git"
+  },
+  "license": "BSL-1.0",
   "dependencies": {
-    "@dojo/framework": "~3.0.0",
-    "@dojo/themes": "~3.0.0",
-    "@dojo/widgets": "~3.0.0",
+    "@dojo/framework": "^4.0.0",
+    "@dojo/themes": "^4.0.1",
+    "@dojo/widgets": "^4.0.1",
     "@fortawesome/fontawesome": "1.2.0-6",
     "@fortawesome/fontawesome-free-brands": "5.1.0-3",
     "tslib": "~1.8.1"
   },
   "devDependencies": {
-    "@dojo/cli-build-app": "^3.0.9",
-    "@dojo/cli-test-intern": "~3.0.0",
+    "@dojo/cli-build-app": "^4.0.3",
+    "@dojo/cli-test-intern": "^4.0.1",
     "@types/node": "^9.6.34",
     "typescript": "~2.6.1"
   }
