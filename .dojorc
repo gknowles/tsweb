@@ -1,7 +1,11 @@
 {
   "build-app": {
     "proxy": {
-      "/srv": "http://localhost:8888"
+      "/srv": "http://localhost:8888",
+      "/backup": "http://localhost:8888",
+      "/functions": "http://localhost:8888",
+      "/metrics": "http://localhost:8888",
+      "/render": "http://localhost:8888"
     }
   },
   "test-intern": {},

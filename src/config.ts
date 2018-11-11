@@ -7,7 +7,7 @@ import { RouteConfig } from '@dojo/framework/routing/interfaces';
 import { Store } from '@dojo/framework/stores/Store'
 import { State } from './interfaces';
 
-export const baseUrl = 'https://localhost:41000';
+export const baseUrl = ''; // 'https://localhost:41000';
 
 export function getRouteConfig(store: Store<State>) {
     const config: RouteConfig[] = [
