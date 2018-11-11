@@ -28,7 +28,14 @@ toolbar.m.css - tismet
     padding-right: 20px;
     color: #c8c8c8;
     text-decoration-line: unset;
-    vertical-align: super;
+    vertical-align: text-bottom;
+}
+.github {
+    content: url(../img/GitHub-Mark-32px.png);
+    filter: invert(1);
+    float: right;
+    padding: 7px 20px 0px 0px;
+    vertical-align: text-bottom;
 }
 
 .title:before {

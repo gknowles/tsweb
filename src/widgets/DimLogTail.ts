@@ -15,11 +15,11 @@ export class DimLogTail extends WidgetBase<TsInfo> {
         let info = this.properties.info || {};
         let now = Date.parse(info.now);
         return v('div', {classes: css.root}, [
-            v('h2', {}, ['File: ' + info.name]),
+            v('h2', {}, ['File - ' + info.name]),
             v('dl', {}, [
                 v('dt', ['Last Modified']),
                 v('dd', [
-                    info.mtime, 
+                    info.mtime,
                     ' (', formatDuration(now - Date.parse(info.mtime)), ')',
                 ]),
                 v('dt', ['Size']),

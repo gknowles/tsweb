@@ -19,9 +19,9 @@ export default class App extends WidgetBase {
                 v('span', {classes: tbcss.title}, ['Tismet']),
                 w(Link, {to: 'tsAbout', classes: tbcss.tab}, ['Settings']),
                 w(Link, {to: 'graph', classes: tbcss.tab}, ['Graph']),
-                v('a', {href: 'https://github.com/gknowles/tismet/issues', 
-                    classes: tbcss.tab}, 
-                    ['Feedback']
+                v('a', {href: 'https://github.com/gknowles/tismet',
+                        classes: tbcss.tab},
+                    [v('span', {classes: tbcss.github}, [''])]
                 ),
             ]),
             v('div', { classes: css.main }, [
