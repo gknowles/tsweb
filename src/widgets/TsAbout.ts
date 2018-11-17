@@ -8,7 +8,7 @@ import { v } from '@dojo/framework/widget-core/d';
 import { WidgetBase } from '@dojo/framework/widget-core/WidgetBase';
 
 import { TsInfo } from '../interfaces';
-
+import { formatDuration, formatEng } from './utils';
 import * as css from '../styles/tsAbout.m.css'
 
 export class TsAbout extends WidgetBase<TsInfo> {
@@ -39,7 +39,7 @@ export class TsAbout extends WidgetBase<TsInfo> {
             out.push(v('tr', {}, [
                 v('td', {classes: css.name}, [d.name]),
                 v('td', {classes: css.value}, [d.value.path]),
-                v('td', {classes: css.value}, [d.value.spaceTotal.toLocaleString()]),
+                v('td', {classes: css.value}, [formatEng(d.value.spaceTotal)]),
                 v('td', {classes: cls}, [pct.toLocaleString() + '%']),
             ]));
         }
@@ -49,10 +49,12 @@ export class TsAbout extends WidgetBase<TsInfo> {
         const { info = [] } = this.properties;
         let out = [];
         if (info.hasOwnProperty('version')) {
+            let now = Date.parse(info.now);
             out.push(v('h2', {key: 0}, ['Execution']));
             out.push(v('table', {key: 0}, this.renderItems([
                 {name: 'Product Version', value: info.version},
-                {name: 'Start Time', value: info.startTime},
+                {name: 'Start Time', value: info.startTime + ' (' + 
+                        formatDuration(now - Date.parse(info.startTime)) + ')'},
                 {name: 'Root directory', value: info.rootDir},
                 {name: 'System account',
                     value: info.account[0].name + '@' + info.account[0].domain},
