@@ -1,5 +1,5 @@
 ﻿////
-Copyright Glen Knowles 2019.
+Copyright Glen Knowles 2020.
 Distributed under the Boost Software License, Version 1.0.
 ////
 
@@ -10,7 +10,9 @@ The format is based on http://keepachangelog.com/[Keep a Changelog]
 and this project adheres to http://semver.org/[Semantic Versioning].
 
 === Unreleased
-* Changed - reimplemented in Elm
+
+=== tsweb (2019-02-04)
+- Changed - reimplemented in Elm
 
 === tsweb (2018-11-16)
 First public release
