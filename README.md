@@ -1,2 +1,0 @@
-# Tismet - Admin UI
-
