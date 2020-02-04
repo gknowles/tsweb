@@ -1,4 +1,7 @@
 node_modules/
 _build/
+elm-stuff/
 output/
 .vs/
+.vscode/
+
